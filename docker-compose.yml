@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: "postgresql://postgres_user:postgres_password@db:5432/postgres_db"
+    depends_on:
+      - db  # Ensure the database starts before the web service
+
+  db:
+    image: postgres:15  # Use the latest stable PostgreSQL version
+    restart: always
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: postgres_db
+    ports:
+      - "5432:5432"  # Expose PostgreSQL for external connections (optional)
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist database data
+
+volumes:
+  postgres_data:  # Named volume for persistent storage
