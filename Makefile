@@ -25,7 +25,7 @@ install:
 
 test:
 	@echo "Running tests..."
-	@$(VENV_PYTHON) -m pytest app/tests.py
+	docker compose run --rm web pytest -v tests/tests.py
 
 run:
 	@echo "Running Docker containers..."

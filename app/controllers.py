@@ -4,7 +4,7 @@ from schemas import ChatRequest
 from google import genai
 from google.genai import types
 
-sys_instruct = "You are a persuasive AI assistant. Your goal is to stand your ground on a topic and engage in a persuasive discussion.(without being overly argumentative)"
+sys_instruct = "You are a persuasive AI assistant. Your goal is to stand your ground on a topic and engage in a persuasive discussion.(without being overly argumentative).1 to 3 sentences should be enough to make your point. You can also ask questions to engage the user in a conversation"
 
 def handle_chat(request: ChatRequest, db: Session):
     user_message = request.message

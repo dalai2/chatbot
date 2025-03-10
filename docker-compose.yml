@@ -6,6 +6,7 @@ services:
       - "8000:8000"
     environment:
       DATABASE_URL: "postgresql://postgres_user:postgres_password@db:5432/postgres_db"
+      TEST_DATABASE_URL: "postgresql://postgres_user:postgres_password@db:5432/chatdb_test"
     depends_on:
       - db  # Ensure the database starts before the web service
 
@@ -16,6 +17,7 @@ services:
       POSTGRES_USER: postgres_user
       POSTGRES_PASSWORD: postgres_password
       POSTGRES_DB: postgres_db
+      CHATDB_TEST: chatdb_test
     volumes:
       - postgres_data:/var/lib/postgresql/data  # Persist database data
 

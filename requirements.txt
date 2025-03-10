@@ -2,8 +2,10 @@ fastapi
 uvicorn[standard]
 pydantic
 pytest
+pytest-mock
 requests
 sqlalchemy 
 psycopg2-binary 
 alembic
 google-genai
+httpx

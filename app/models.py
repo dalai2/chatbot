@@ -1,14 +1,18 @@
 import uuid
 import os
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres_user:postgres_password@localhost:5432/chatdb")
 
 # Database setup
-engine = create_engine(DATABASE_URL)
+if 'pytest' in os.environ.get('PYTHONPATH', ''): #Detect if running in pytest
+    engine = create_engine("sqlite:///:memory:") #In memory sqlite db for tests.
+else:
+    engine = create_engine(DATABASE_URL)
+
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 Base = declarative_base()
 
