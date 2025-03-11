@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: "postgresql://postgres_db_29uv_user:Gmuj5h34DoRyzurZk9CSFBhDDENeNqyr@dpg-cv7of2ogph6c73962s6g-a/postgres_db_29uv"
+      DATABASE_URL: "postgresql://postgres_user:postgres_password@db:5432/postgres_db"
       TEST_DATABASE_URL: "postgresql://postgres_user:postgres_password@db:5432/chatdb_test"
     depends_on:
       - db  # Ensure the database starts before the web service
